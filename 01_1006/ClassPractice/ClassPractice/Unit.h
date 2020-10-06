@@ -1,6 +1,8 @@
 #ifndef UNIT_H
 #define UNIT_H
 
+#include "Definition.h"
+
 class Unit
 {
 public:
@@ -10,14 +12,7 @@ public:
 	void PrintStatus();
 
 private:
-	int m_hp;
-	int m_str;
-	int m_mag;
-	int m_tec;
-	int m_spd;
-	int m_def;
-	int m_luc;
-	int m_mde;
+	Status m_status;
 };
 
 #endif
