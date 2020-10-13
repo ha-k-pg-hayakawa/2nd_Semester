@@ -72,7 +72,8 @@ int main()
 		printf("v1[%d] = %d\n", i, v1[i]);
 	}
 
-	v1.resize(100);
+	//あらかじめ最大数がわかっていれば.reserve()で領域を確保しておく
+	v1.reserve(100);
 
 	system("pause");
 	return 0;
