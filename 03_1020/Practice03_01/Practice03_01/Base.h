@@ -5,6 +5,11 @@ public:
 	Base();
 	~Base();
 
+	//継承先で、それぞれ処理の違うことがわかっている関数を
+	//純粋仮想関数として基底クラスの宣言
+	virtual void Exec() = 0;
+	virtual void Draw() = 0;
+
 	//当たり判定
 	virtual bool CheckHit(int x,int y,int width,int height);
 
