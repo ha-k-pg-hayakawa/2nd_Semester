@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Enemy.h"
 #include "Player.h"
+#include "EnemyManager.h"
 
 void PrintHp(Base* target)
 {
@@ -14,6 +15,7 @@ void PrintHp(Base* target)
 
 int main()
 {
+	/*
 	//Baseのポインタ変数配列
 	Base* array[] =
 	{
@@ -47,6 +49,29 @@ int main()
 	//単体で実体化させることができなくなる
 	//Base base;
 	//Base* pBase = new Base();
+	*/
+
+	//EnemyManagerを使ったEnemyクラスの管理
+	EnemyManager* enemyMng = new EnemyManager();
+	Base* pEnemy = nullptr;
+
+	//ステージ開始にまとめて初期化
+	enemyMng->CreateEnemy(0);
+	enemyMng->CreateEnemy(1);
+	pEnemy = enemyMng->CreateEnemy(2);
+	enemyMng->CreateEnemy(3);
+	enemyMng->CreateEnemy(4);
+	enemyMng->CreateEnemy(4);
+
+	//作成したエネミーに各処理をやらす
+	enemyMng->Exec();
+	enemyMng->Draw();
+
+	//指定のエネミーの削除
+	enemyMng->DestoryEnemy(pEnemy);
+
+	//指定座標と接触してるエネミーを取得
+	pEnemy = enemyMng->CheckHit(10, 10, 20, 30);
 
 	system("pause");
 	return 0;
