@@ -12,9 +12,12 @@ public:
 	void Exec();
 	void Draw();
 
+	//“–‚½‚è”»’è
+	virtual bool CheckHit(int x, int y, int width, int height);
+
 private:
 
-	//Enemuy ‚Ì‚Ý
+	//Enemy ‚Ì‚Ý
 	int m_Routine;
 };
 

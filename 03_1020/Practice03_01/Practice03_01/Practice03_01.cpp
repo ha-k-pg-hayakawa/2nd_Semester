@@ -31,6 +31,13 @@ int main()
 	printf("PosY      = %0.2f\n", enemy.GetPosY());
 	printf("MoveSpeed = %0.2f\n", enemy.GetMoveSpeed());
 
+	/*if (player.CheckHit(10, 10, 20, 30) == false)
+	{
+		printf("当たっていません\n");
+	}*/
+	player.CheckHit(10, 10, 20, 30);
+	enemy.CheckHit(10, 10, 20, 30);
+
 	system("pause");
 	return 0;
 }
