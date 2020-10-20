@@ -3,7 +3,7 @@ class Base
 {
 public:
 	Base();
-	virtual ~Base();
+	~Base();
 
 	//“–‚½‚è”»’è
 	virtual bool CheckHit(int x,int y,int width,int height);
@@ -19,7 +19,7 @@ public:
 	float GetMoveSpeed();
 	int GetWidth();
 	int GetHeight();
-
+	
 private:
 	int m_Hp;
 	float m_PosX;
