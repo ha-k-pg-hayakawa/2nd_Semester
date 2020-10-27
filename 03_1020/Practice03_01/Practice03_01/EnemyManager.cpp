@@ -11,9 +11,8 @@ EnemyManager::~EnemyManager()
 	std::vector<Base*>::iterator itr;
 	for (itr = m_Enemies.begin(); itr != m_Enemies.end(); ++itr)
 	{
-		Base* ptr = *itr;
-		delete ptr;
-		ptr = nullptr;
+		delete *itr;
+		*itr = nullptr;
 	}
 	//m_Enemies‚É‚Ínullptr‚ª“ü‚Á‚½Base*‚Ì”z—ñ‚ª“ü‚Á‚Ä‚¢‚é
 	m_Enemies.clear();
@@ -24,15 +23,14 @@ class Base* EnemyManager::CreateEnemy(int enemy_type)
 	std::vector<Base*>::iterator itr;
 	for (itr = m_Enemies.begin(); itr != m_Enemies.end(); ++itr)
 	{
-		Base* ptr = *itr;
-		if (ptr == nullptr)
+		if (*itr == nullptr)
 		{
-			ptr = new Enemy();
-			return ptr;
+			*itr = new Enemy();
+			return *itr;
 		}
 	}
 
-	//‹ó‚«‚ª‚È‚¢‚Ì‚ÅV‹K‚Ìì‚Á‚Äppush_back
+	//‹ó‚«‚ª‚È‚¢‚Ì‚ÅV‹K‚Ìì‚Á‚Äpush_back
 	Base* ptr = new Enemy();
 	m_Enemies.push_back(ptr);
 	return ptr;
@@ -48,11 +46,10 @@ bool EnemyManager::DestoryEnemy(class Base* ptr)
 	std::vector<Base*>::iterator itr;
 	for (itr = m_Enemies.begin(); itr != m_Enemies.end(); ++itr)
 	{
-		Base* tmp = *itr;
-		if (tmp == nullptr)
+		if (*itr == nullptr)
 		{
-			delete tmp;
-			tmp = nullptr;
+			delete *itr;
+			*itr = nullptr;
 			return true;
 		}
 	}
@@ -64,9 +61,9 @@ void EnemyManager::Exec()
 	std::vector<Base*>::iterator itr;
 	for (itr = m_Enemies.begin(); itr != m_Enemies.end(); ++itr)
 	{
-		Base* ptr = *itr;
-		if (ptr == nullptr)
+		if (*itr == nullptr)
 		{
+			Base* ptr = *itr;
 			ptr->Exec();
 		}
 	}
@@ -90,9 +87,10 @@ class Base* EnemyManager::CheckHit(int x, int y, int width, int height)
 	std::vector<Base*>::iterator itr;
 	for (itr = m_Enemies.begin(); itr != m_Enemies.end(); ++itr)
 	{
-		Base* ptr = *itr;
-		if (ptr == nullptr)
+		
+		if (*itr == nullptr)
 		{
+			Base* ptr = *itr;
 			if (ptr->CheckHit(x, y, width, height))
 			{
 				return ptr;
